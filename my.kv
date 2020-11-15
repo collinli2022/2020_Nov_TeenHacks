@@ -1,0 +1,26 @@
+<CameraBoxLayout>:
+    orientation: 'vertical'
+    spacing: 10
+    padding: 10
+    Image:
+        id: imageCamera
+        source: 'mini.jpg'
+    Button:
+        id: buttonStart
+        text: 'Start'
+        on_press: root.startCamera(imageCamera, buttonStart, buttonStop, labelBpm)
+        height: 50
+        size_hint_y: None
+        disabled: False
+    Button:
+        id: buttonStop
+        text: 'Stop'
+        on_press: root.stopCamera(imageCamera, buttonStart, buttonStop, labelBpm)
+        height: 50
+        size_hint_y: None
+        disabled: True
+    Label:
+        id: labelBpm
+        text: 'Heart rate: undef'
+        height: 50
+        size_hint_y: None
