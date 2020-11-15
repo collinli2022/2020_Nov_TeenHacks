@@ -19,12 +19,17 @@ import kivy.core.image
 from kivy.uix.image import Image
 from kivy.clock import Clock
 from kivy.graphics.texture import Texture
-from helper import HeartRate
 import numpy as np
 import cv2
+import requests
+
+# personal imports
+from helper import HeartRate
 
 Config.set('graphics', 'resizable', True)
 
+
+# ----------HeartRate---------
 class KivyCamera(Image):
     def __init__(self, parent, capture, labelBpm, **kwargs):
         super(KivyCamera, self).__init__(**kwargs)
@@ -106,7 +111,7 @@ class KivyCamera(Image):
             image_texture = self.get_texture_from_frame(adjFrame, 0)
 
             if bpmArr != -1:
-                self.displayBpm.text = ("Heart rate: " + bpmArr + " bpm")
+                self.displayBpm.text = bpmArr
 
             # display image from the texture
             self.texture = image_texture
@@ -126,7 +131,7 @@ class KivyCamera(Image):
         image_texture.blit_buffer(buffer_frame_str, colorfmt='bgr', bufferfmt='ubyte')
         return image_texture
 
-class CameraBoxLayout(BoxLayout):
+class HeartRateLayout(BoxLayout):
     started = False
     # initialize the "Camera"
     # kivyCamera = Image(source='mini.jpg')
@@ -178,6 +183,35 @@ class CameraBoxLayout(BoxLayout):
             # Release the capture
             self.capture.release()
 
+# ----------HeartRate---------
+
+# ----------Happiness---------
+
+# ----------Happiness---------
+
+# -----------COVID-----------
+class CovidLayout(BoxLayout):
+    def getDataGlobal(self):
+        url = "https://api.covid19api.com/summary"
+        payload = {}
+        headers= {}
+        response = requests.request("GET", url, headers=headers, data = payload)
+
+        stuff = response.json()
+        return stuff['Global']
+
+    def getDataState(self):
+        pass
+    def refresh(self, NewConfirmed, TotalConfirmed, NewDeaths, NewRecovered, TotalRecovered):
+        data = self.getDataGlobal()
+        NewConfirmed.text = "New Cases: " + str(data['NewConfirmed'])
+        TotalConfirmed.text = "Total: " + str(data['TotalConfirmed'])
+        NewDeaths.text = "New Deaths: " + str(data['NewDeaths'])
+        NewRecovered.text = "New Recovered: " + str(data['NewRecovered'])
+        TotalRecovered.text = "Total Recovered: " + str(data['TotalRecovered'])
+
+# -----------COVID-----------
+
 # create App class 
 class MyApp(App):
     # override the build method and return the root widget of this App 
@@ -186,21 +220,29 @@ class MyApp(App):
         # Define a grid layout for this App 
         self.layout = GridLayout(cols = 2, padding = 10) 
   
-        self.button1 = Button(text ="Heart Rate") 
+        self.button1 = Button(text = "Heart Rate") 
         self.layout.add_widget(self.button1)
 
-        self.button2 = Button(text ="Happiness") 
+        self.button2 = Button(text = "Happiness") 
         self.layout.add_widget(self.button2)
+
+        self.button3 = Button(text = "Wink")
+        self.layout.add_widget(self.button3)
+
+        self.button4 = Button(text = "Covid")
+        self.layout.add_widget(self.button4)
   
         # Attach a callback for the button press event 
         self.button1.bind(on_press = self.onButtonPress1)
-        self.button2.bind(on_press = self.onButtonPress2) 
+        self.button2.bind(on_press = self.onButtonPress2)
+        self.button3.bind(on_press = self.onButtonPress3)
+        self.button4.bind(on_press = self.onButtonPress4)
           
         return self.layout 
   
     # On button press - Create a popup dialog with a label and a close button 
     def onButtonPress1(self, button):
-        layout = CameraBoxLayout()
+        layout = HeartRateLayout()
         self.popup1 = Popup(title ='Heart Rate', 
                       content = layout, 
                       size_hint =(0.85, 0.85))   
@@ -210,6 +252,17 @@ class MyApp(App):
         self.popup1.dismiss()
 
     def onButtonPress2(self, button):
+        pass
+
+    def onButtonPress3(self, button):
+        pass
+
+    def onButtonPress4(self, button):
+        layout = CovidLayout()
+        self.popup4 = Popup(title ='Covid', 
+                      content = layout, 
+                      size_hint =(0.85, 0.85))   
+        self.popup4.open()
         pass
 
 # run the App 

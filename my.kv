@@ -1,4 +1,4 @@
-<CameraBoxLayout>:
+<HeartRateLayout>:
     orientation: 'vertical'
     spacing: 10
     padding: 10
@@ -21,6 +21,47 @@
         disabled: True
     Label:
         id: labelBpm
-        text: 'Heart rate: undef'
+        text: 'Ur dead ;)... no just wait'
+        height: 50
+        size_hint_y: None
+
+<CovidLayout>:
+    orientation: 'vertical'
+    spacing: 10
+    padding: 10
+    Label:
+        id: Global
+        text: 'Global'
+        height: 50
+        size_hint_y: None
+    Label:
+        id: NewConfirmed
+        text: 'New cases'
+        height: 25
+        size_hint_y: None
+    Label:
+        id: TotalConfirmed
+        text: 'Total'
+        height: 25
+        size_hint_y: None
+    Label:
+        id: NewDeaths
+        text: 'New Deaths'
+        height: 25
+        size_hint_y: None
+    Label:
+        id: NewRecovered
+        text: 'New Recovered'
+        height: 25
+        size_hint_y: None
+    Label:
+        id: TotalRecovered
+        text: 'Total Recovered'
+        height: 25
+        size_hint_y: None
+    Button:
+        id: refresh
+        text: 'refresh'
+        on_press: root.refresh(NewConfirmed, TotalConfirmed, NewDeaths, NewRecovered, TotalRecovered)
         height: 50
         size_hint_y: None

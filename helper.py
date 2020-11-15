@@ -10,6 +10,7 @@ from PIL import Image
 import io
 import qimage2ndarray
 
+
 class HeartRate:
 
     def __init__(self):
