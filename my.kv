@@ -25,6 +25,30 @@
         height: 50
         size_hint_y: None
 
+<FacialAttributeLayout>:
+    orientation: 'vertical'
+    Camera:
+        id: camera
+        resolution: (1920, 1080)
+        play: False
+    ToggleButton:
+        text: 'Start Camera'
+        on_press: camera.play = not camera.play
+        height: 50
+        size_hint_y: None
+        height: '48dp'
+    Button:
+        id: buttonCapture
+        text: 'Capture'
+        on_press: root.capture(buttonCapture, results)
+        height: 50
+        size_hint_y: None
+        disabled: False
+    Label:
+        id: results
+        text: 'Take a photo to see'
+        height: 50
+        size_hint_y: None
 <CovidLayout>:
     orientation: 'vertical'
     spacing: 10

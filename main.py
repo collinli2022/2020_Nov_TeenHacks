@@ -1,6 +1,6 @@
 import kivy
 from kivy.app import App
-kivy.require('1.9.0')
+#kivy.require('1.9.0') #<-- not really needed if its updated... so... lets pray :)
 from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.textinput import TextInput
@@ -22,10 +22,11 @@ from kivy.graphics.texture import Texture
 import numpy as np
 import cv2
 import requests
+from deepface import DeepFace
+from PIL import Image as PILImage
 
 # personal imports
 from helper import HeartRate
-
 Config.set('graphics', 'resizable', True)
 
 
@@ -186,8 +187,30 @@ class HeartRateLayout(BoxLayout):
 # ----------HeartRate---------
 
 # ----------Happiness---------
+class FacialAttributeLayout(BoxLayout):
+    kivyCamera = None
 
+    def capture(self, buttonCapture, resultLabel):
+        camera = self.ids['camera']
+        camera.export_to_png("ffaaccee.png")
+        im1 = PILImage.open('./ffaaccee.png')
+        im1 = im1.convert('RGB')
+        im1.save('ffaaccee.jpg')
+        print("Captured")
+        self.analyze('ffaaccee.jpg')
+
+
+    def analyze(self, imgFileLocation):
+        obj = DeepFace.analyze(imgFileLocation, actions = ['age', 'gender', 'race', 'emotion'])
+        output = "Years old: " + str(obj["age"]) + "\nRace: " + str(obj["dominant_race"]) + "\nEmotion: " + str(obj["dominant_emotion"]) + "\nGender: " + str(obj["gender"])
+        print(output)
+        self.ids['results'].text = output
+        return obj
 # ----------Happiness---------
+
+# ----------Complements---------
+
+# ----------Complements---------
 
 # -----------COVID-----------
 class CovidLayout(BoxLayout):
@@ -200,8 +223,6 @@ class CovidLayout(BoxLayout):
         stuff = response.json()
         return stuff['Global']
 
-    def getDataState(self):
-        pass
     def refresh(self, NewConfirmed, TotalConfirmed, NewDeaths, NewRecovered, TotalRecovered):
         data = self.getDataGlobal()
         NewConfirmed.text = "New Cases: " + str(data['NewConfirmed'])
@@ -245,14 +266,18 @@ class MyApp(App):
         layout = HeartRateLayout()
         self.popup1 = Popup(title ='Heart Rate', 
                       content = layout, 
-                      size_hint =(0.85, 0.85))   
+                      size_hint =(0.85, 0.85))
         self.popup1.open()
 
     def stopCam(self, button):
         self.popup1.dismiss()
 
     def onButtonPress2(self, button):
-        pass
+        layout = FacialAttributeLayout()
+        self.popup2 = Popup(title ='Facial Attribute', 
+                      content = layout, 
+                      size_hint =(0.85, 0.85))
+        self.popup2.open()
 
     def onButtonPress3(self, button):
         pass
@@ -261,9 +286,8 @@ class MyApp(App):
         layout = CovidLayout()
         self.popup4 = Popup(title ='Covid', 
                       content = layout, 
-                      size_hint =(0.85, 0.85))   
+                      size_hint =(0.85, 0.85))
         self.popup4.open()
-        pass
 
 # run the App 
 if __name__ == '__main__': 
