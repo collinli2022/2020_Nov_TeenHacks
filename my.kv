@@ -49,6 +49,21 @@
         text: 'Take a photo to see'
         height: 50
         size_hint_y: None
+
+<ComplementsLayout>
+    orientation: 'vertical'
+    Label:
+        id: joke
+        text: 'I\'m pretty punny'
+        height: 50
+        size_hint_y: None
+    Button:
+        id: newJoke
+        text: 'get new joke'
+        on_press: root.newJoke(joke)
+        height: 50
+        size_hint_y: None
+
 <CovidLayout>:
     orientation: 'vertical'
     spacing: 10

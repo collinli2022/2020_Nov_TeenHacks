@@ -24,6 +24,8 @@ import cv2
 import requests
 from deepface import DeepFace
 from PIL import Image as PILImage
+import json
+import random
 
 # personal imports
 from helper import HeartRate
@@ -210,6 +212,13 @@ class FacialAttributeLayout(BoxLayout):
 
 # ----------Complements---------
 
+class ComplementsLayout(BoxLayout):
+    def newJoke(self, joke):
+        with open('complements.json', 'r', encoding='utf-8') as openfile: 
+          # Reading from json file 
+          commands = json.load(openfile)
+        joke.text = random.choice(commands['complements'])
+
 # ----------Complements---------
 
 # -----------COVID-----------
@@ -247,7 +256,7 @@ class MyApp(App):
         self.button2 = Button(text = "Happiness") 
         self.layout.add_widget(self.button2)
 
-        self.button3 = Button(text = "Wink")
+        self.button3 = Button(text = "LoL")
         self.layout.add_widget(self.button3)
 
         self.button4 = Button(text = "Covid")
@@ -280,11 +289,14 @@ class MyApp(App):
         self.popup2.open()
 
     def onButtonPress3(self, button):
-        pass
-
+        layout = ComplementsLayout()
+        self.popup3 = Popup(title ='Facial Attribute', 
+                      content = layout, 
+                      size_hint =(0.85, 0.85))
+        self.popup3.open()
     def onButtonPress4(self, button):
         layout = CovidLayout()
-        self.popup4 = Popup(title ='Covid', 
+        self.popup3 = Popup(title ='LoL', 
                       content = layout, 
                       size_hint =(0.85, 0.85))
         self.popup4.open()
