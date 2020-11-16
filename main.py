@@ -296,7 +296,7 @@ class MyApp(App):
         self.popup3.open()
     def onButtonPress4(self, button):
         layout = CovidLayout()
-        self.popup3 = Popup(title ='LoL', 
+        self.popup4 = Popup(title ='COVID', 
                       content = layout, 
                       size_hint =(0.85, 0.85))
         self.popup4.open()

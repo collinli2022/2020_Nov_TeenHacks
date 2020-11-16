@@ -1,0 +1,97 @@
+absl-py @ file:///C:/ci/absl-py_1600290345082/work
+aiohttp @ file:///C:/ci/aiohttp_1602530358780/work
+appdirs==1.4.4
+argcomplete @ file:///tmp/build/80754af9/argcomplete_1601305737066/work
+astor==0.8.1
+astunparse==1.6.3
+async-timeout==3.0.1
+attrs @ file:///tmp/build/80754af9/attrs_1600298409949/work
+blinker==1.4
+brotlipy==0.7.0
+buildozer==1.2.0
+cachetools @ file:///tmp/build/80754af9/cachetools_1596822027882/work
+certifi==2020.11.8
+cffi @ file:///C:/ci/cffi_1600699250966/work
+chardet==3.0.4
+click==7.1.2
+cryptography @ file:///C:/ci/cryptography_1601046913206/work
+deepface==0.0.40
+distlib==0.3.1
+dlib @ file:///D:/bld/dlib_1602513921653/work
+docutils==0.16
+filelock==3.0.12
+Flask==1.1.2
+gast==0.3.3
+gdown==3.12.2
+google-auth @ file:///tmp/build/80754af9/google-auth_1601995530934/work
+google-auth-oauthlib==0.4.1
+google-pasta==0.2.0
+grpcio @ file:///C:/ci/grpcio_1597406403308/work
+h5py==2.10.0
+idna @ file:///tmp/build/80754af9/idna_1593446292537/work
+importlib-metadata @ file:///tmp/build/80754af9/importlib-metadata_1602276842396/work
+imutils==0.5.3
+itsdangerous==1.1.0
+Jinja2==2.11.2
+Keras==2.4.3
+Keras-Applications @ file:///tmp/build/80754af9/keras-applications_1594366238411/work
+Keras-Preprocessing==1.1.2
+Kivy==1.11.1
+kivy-deps.angle==0.3.0
+kivy-deps.glew==0.3.0
+kivy-deps.gstreamer==0.3.1
+kivy-deps.sdl2==0.3.1
+Kivy-Garden==0.1.4
+kivymd==0.104.1
+Markdown @ file:///C:/ci/markdown_1603216569530/work
+MarkupSafe==1.1.1
+mkl-fft==1.2.0
+mkl-random==1.1.0
+mkl-service==2.3.0
+mtcnn==0.1.0
+multidict @ file:///C:/ci/multidict_1600456486794/work
+mysqlclient==2.0.1
+numpy==1.18.5
+oauthlib==3.1.0
+opencv-contrib-python==4.4.0.46
+opencv-python==4.4.0.46
+opt-einsum==3.1.0
+pandas==1.1.4
+pexpect==4.8.0
+Pillow==8.0.1
+protobuf==3.13.0
+ptyprocess==0.6.0
+pyasn1==0.4.8
+pyasn1-modules==0.2.8
+pycparser @ file:///tmp/build/80754af9/pycparser_1594388511720/work
+Pygments==2.7.2
+PyJWT==1.7.1
+pyOpenSSL @ file:///tmp/build/80754af9/pyopenssl_1594392929924/work
+PyQt5==5.15.1
+PyQt5-sip==12.8.1
+pyqtgraph==0.11.0
+PySocks @ file:///C:/ci/pysocks_1594394709107/work
+python-dateutil==2.8.1
+pytz==2020.4
+PyYAML==5.3.1
+qimage2ndarray==1.8.3
+requests==2.25.0
+requests-oauthlib==1.3.0
+rsa @ file:///tmp/build/80754af9/rsa_1596998415516/work
+scipy==1.4.1
+sh==1.14.1
+six==1.15.0
+tensorboard==2.4.0
+tensorboard-plugin-wit==1.6.0
+tensorflow==2.3.1
+tensorflow-estimator==2.3.0
+termcolor==1.1.0
+tqdm==4.52.0
+urllib3==1.26.2
+virtualenv==20.1.0
+Werkzeug==0.16.1
+win-inet-pton==1.1.0
+wincertstore==0.2
+wrapt==1.12.1
+yarl @ file:///C:/ci/yarl_1602679793616/work
+zipp @ file:///tmp/build/80754af9/zipp_1604001098328/work
